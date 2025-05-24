@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-buttons">
+      <button onclick="scrollToSection('home')">Home</button>
+      <button onclick="scrollToSection('login')">Login</button>
+      <button onclick="scrollToSection('about')">About</button>
+      <button onclick="scrollToSection('events')">Events</button>
+    </div>
+  </div>
+
+  <section id="home">
+    <img src="camera.png" alt="Banner Image" class="banner">
+  </section>
+
+  <section id="about" class="content-section white-bg">
+    <h2>About Us</h2>
+    <p>This is the about section of our interactive page. Here, you can add details about your event or organization.</p>
+  </section>
+
+  <section id="contact" class="content-section">
+    <h2>Contact Information</h2>
+    <p>Email: info@example.com</p>
+    <p>Phone: +123-456-7890</p>
+    <p>Address: 123 Main Street, City, Country</p>
+  </section>
+
+  <button class="scroll-top" onclick="scrollToTop()">⬆️ Top</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
