@@ -1,119 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Signup - Picme</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    .signup-container {
-      background-color: #0c2742;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
-
-    .signup-box {
-      background-color: white;
-      color: black;
-      padding: 30px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 600px;
-    }
-
-    .signup-box h2 {
-      text-align: center;
-      color: #0055aa;
-    }
-
-    .signup-box input {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .signup-box button {
-      width: 100%;
-      padding: 10px;
-      background-color: #0055aa;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .signup-box button:hover {
-      background-color: #003f7f;
-    }
-
-    .note {
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 10px;
-    }
-
-    .error {
-      color: red;
-      font-size: 0.85em;
-      margin: 4px 0 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="signup-container">
     <h1>Picme</h1>
     <div class="signup-box">
       <h2>User Signup</h2>
-      <form id="signupForm">
-        <input type="text" placeholder="User Name" required />
-        <input type="text" placeholder="Username" required />
-        <input type="password" id="password" placeholder="Password" required />
-        <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
-        <label><input type="checkbox" onclick="togglePassword()"> Show Password</label>
-        <div class="note">
-          Password must include uppercase, lowercase, number, and special character.
-        </div>
-        <div id="error-message" class="error"></div>
-        <input type="email" placeholder="Email Address" required />
-        <input type="tel" placeholder="Mobile Number" required />
-        <input type="text" placeholder="Aadhar Card Number" required />
-        <input type="text" placeholder="House Address" required />
-        <button type="submit">Sign Up</button>
-      </form>
+      <form action="user-signup.php" method="POST">
+  <input type="text" name="name" placeholder="Full Name" required />
+  <input type="text" name="username" placeholder="Username" required />
+  <input type="password" name="password" placeholder="Password" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="tel" name="mobile" placeholder="Mobile" required />
+  <button type="submit">Sign Up</button>
+</form>
+
     </div>
   </div>
-
-  <script>
-    function togglePassword() {
-      const pass = document.getElementById("password");
-      const confirm = document.getElementById("confirmPassword");
-      const type = pass.type === "password" ? "text" : "password";
-      pass.type = confirm.type = type;
-    }
-
-    document.getElementById("signupForm").addEventListener("submit", function (e) {
-      const password = document.getElementById("password").value;
-      const confirmPassword = document.getElementById("confirmPassword").value;
-      const errorMessage = document.getElementById("error-message");
-
-      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-      if (password !== confirmPassword) {
-        e.preventDefault();
-        errorMessage.textContent = "Passwords do not match.";
-      } else if (!passwordRegex.test(password)) {
-        e.preventDefault();
-        errorMessage.textContent = "Password must include uppercase, lowercase, number, and special character, and be at least 8 characters long.";
-      } else {
-        errorMessage.textContent = "";
-      }
-    });
-  </script>
 </body>
 </html>

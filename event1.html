@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annual Tech Conference 2025 - Picme</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo"><h1>Picme</h1></div>
+    <div class="nav-buttons">
+      <button onclick="location.href='index.html'">Home</button>
+      <button onclick="toggleLoginPopup()">Login</button>
+      <button onclick="location.href='events.html'">Events</button>
+    </div>
+  </div>
+
+  <section class="content-section white-bg">
+    <h2>Annual Tech Conference 2025</h2>
+    <p>Relive the moments from our Annual Tech Conference held in 2025.</p>
+
+    <!-- Scan Buttons Section -->
+    <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+      <button class="nav-button" onclick="startFaceScan()">Scan and Retrieve Photos</button>
+
+      <div id="camera-container" style="display:none;">
+        <video id="video" width="720" height="560" autoplay muted></video>
+        <button class="nav-button" onclick="captureAndMatch()">Capture & Match</button>
+      </div>
+    </div>
+
+    <!-- Match Result Display -->
+    <div id="match-result" style="margin-top: 20px;"></div>
+
+    <!-- Photo Gallery -->
+    <div class="photo-gallery" style="margin-top: 20px;">
+      <img src="images/event1/photo1.jpg" alt="Photo 1" />
+      <img src="images/event1/photo2.jpg" alt="Photo 2" />
+    </div>
+  </section>
+
+  <script src="face-api.min.js"></script>
+  <script>
+    async function startFaceScan() {
+      document.getElementById('camera-container').style.display = 'block';
+
+      const video = document.getElementById('video');
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+      } catch (err) {
+        alert('Camera access denied or not available.');
+        console.error(err);
+      }
+
+      // Load face-api models
+      await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+      await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
+      await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
+    }
+
+    async function captureAndMatch() {
+      const video = document.getElementById('video');
+
+      const detection = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptor();
+      if (!detection) {
+        document.getElementById('match-result').innerText = 'No face detected. Please try again.';
+        return;
+      }
+
+      // TODO: Compare captured descriptor with pre-labeled face descriptors
+
+      document.getElementById('match-result').innerText = 'Face captured successfully! (Matching logic not implemented)';
+    }
+  </script>
+</body>
+</html>

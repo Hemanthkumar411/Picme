@@ -1,0 +1,26 @@
+CREATE DATABASE IF NOT EXISTS picme_db;
+USE picme_db;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  username VARCHAR(50) UNIQUE,
+  password VARCHAR(255),
+  email VARCHAR(100),
+  mobile VARCHAR(15)
+);
+
+CREATE TABLE admins (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  username VARCHAR(50) UNIQUE,
+  password VARCHAR(255),
+  email VARCHAR(100),
+  mobile VARCHAR(15),
+  aadhar VARCHAR(20),
+  address VARCHAR(255),
+  company_name VARCHAR(100),
+  company_details TEXT,
+  company_address VARCHAR(255),
+  company_email VARCHAR(100)
+);

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events - Picme</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo"><h1>Picme</h1></div>
+    <div class="nav-buttons">
+      <button onclick="location.href='index.html'">Home</button>
+      <button onclick="toggleLoginPopup()">Login</button>
+      <button onclick="location.href='events.html'">Events</button>
+    </div>
+  </div>
+
+  <section class="content-section white-bg">
+    <h2>Our Events</h2>
+    <div class="event-list">
+      <div class="event-card">
+        <h3>Annual Tech Conference 2025</h3>
+        <p>Join us for a day of insightful tech talks and networking.</p>
+        <button onclick="location.href='event1.html'">View Photos</button>
+      </div>
+      <div class="event-card">
+        <h3>farewell CSE-DS</h3>
+        <p>Experience the joy of summer with music, food, and fun activities.</p>
+        <button onclick="location.href='event2.html'">View Photos</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

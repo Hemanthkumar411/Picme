@@ -5,13 +5,24 @@ body {
 }
 
 .navbar {
-  background-color: #003366;
-  padding: 10px 20px;
+  background-color: #0c2742;
+  padding: 25px 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+.logo h1 {
+  color: #0055aa;
+  margin: 0;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
 }
 
 .nav-buttons button {
@@ -22,16 +33,48 @@ body {
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s;
+  border-radius: 6%;
 }
 
 .nav-buttons button:hover {
-  background-color: #0077cc;
+  background-color: #0070c1;
+}
+
+.banner-section {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
 }
 
 .banner {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 350px;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+.banner-text h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.banner-text p {
+  font-size: 1.2rem;
 }
 
 .content-section {
@@ -48,10 +91,9 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 10px 15px;
-  font-size: 18px;
-  background-color: #003366;
-  color: white;
+  padding: 3px 5px;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;
   border-radius: 5px;
@@ -59,5 +101,125 @@ body {
 }
 
 .scroll-top:hover {
+  background-color: #ffffff;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.popup-content {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 300px;
+  position: relative;
+  text-align: center;
+}
+
+.popup-content .login-form {
+  display: none;
+  margin-top: 20px;
+}
+
+.popup-content input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+}
+
+.popup-content button {
+  padding: 10px 15px;
+  background: #0055aa;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.popup-content button:hover {
+  background: #003f7f;
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.event-card {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 45%;
+  border-radius: 8px;
+}
+.event-card button{
   background-color: #0055aa;
+  color: white;
+  border: none;
+  margin-left: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 6%;
+}
+
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.photo-gallery img {
+  width: 200px;
+  height: auto;
+  border-radius: 5px;
+}
+.info-section {
+  background: rgba(0, 51, 102, 0.8); /* Dark blue with transparency */
+  color: white;
+  padding: 60px 40px;
+  margin: 40px 0;
+  border-radius: 10px;
+}
+
+.info-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.info-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.success {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: green;
+  background-color: #e6f9e6;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #b2d8b2;
+  display: none;
+  text-align: center;
 }

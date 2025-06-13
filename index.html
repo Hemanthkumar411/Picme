@@ -3,37 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Page</title>
+  <title>Picme</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="navbar">
-    <div class="nav-buttons">
+    <div class="logo"><h1>Picme</h1></div>
+    <div class="nav-buttons" id="nav-buttons">
       <button onclick="scrollToSection('home')">Home</button>
-      <button onclick="scrollToSection('login')">Login</button>
+      <button onclick="toggleLoginPopup()" id="loginBtn">Login</button>
       <button onclick="scrollToSection('about')">About</button>
-      <button onclick="scrollToSection('events')">Events</button>
+      <button onclick="window.location.href='events.html'">Events</button>
     </div>
   </div>
 
-  <section id="home">
+  <section id="home" class="banner-section">
+    <div class="overlay">
+      <div class="banner-text">
+        <h2>Picme</h2>
+        <p>Capture moments, store memories, and access them anytime with face recognition magic!</p>
+      </div>
+    </div>
     <img src="camera.png" alt="Banner Image" class="banner">
   </section>
 
-  <section id="about" class="content-section white-bg">
+  <section id="about" class="info-section">
     <h2>About Us</h2>
-    <p>This is the about section of our interactive page. Here, you can add details about your event or organization.</p>
+    <p>Details about the platform and how it works for users and admins.</p>
   </section>
 
-  <section id="contact" class="content-section">
+  <section id="contact" class="info-section">
     <h2>Contact Information</h2>
     <p>Email: info@example.com</p>
     <p>Phone: +123-456-7890</p>
     <p>Address: 123 Main Street, City, Country</p>
   </section>
 
-  <button class="scroll-top" onclick="scrollToTop()">⬆️ Top</button>
+  <div id="login-popup" class="popup-container">
+    <div class="popup-content">
+      <span class="close-btn" onclick="toggleLoginPopup()">&times;</span>
+      <h3>Login as:</h3>
+      <button onclick="showLoginForm('user')">User Login</button>
+      <button onclick="showLoginForm('admin')">Admin Login</button>
 
+      <div id="user-login" class="login-form">
+        <h4>User Login</h4>
+        <input type="text" id="user-username" placeholder="Username" />
+        <input type="password" id="user-password" placeholder="Password" />
+        <button onclick="login('user')">Login</button>
+        <p>Don't have an account? <a href="user-signup.html">Sign up</a></p>
+      </div>
+
+      <div id="admin-login" class="login-form">
+        <h4>Admin Login</h4>
+        <input type="text" id="admin-username" placeholder="Admin Username" />
+        <input type="password" id="admin-password" placeholder="Password" />
+        <button onclick="login('admin')">Login</button>
+        <p>Don't have an account? <a href="admin-signup.html">Sign up</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="login-message" class="success" style="display:none;"></div>
+  <button class="scroll-top" onclick="scrollToTop()">scroll to Top</button>
   <script src="script.js"></script>
+  <script>
+   window.onload = function () {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('signup') === 'success') {
+      alert("Signup successful! Please login.");
+      toggleLoginPopup();
+    }
+  };
+</script>
+
 </body>
 </html>
